@@ -58,3 +58,18 @@ puts "Ruby".rjust(10, "-") # imprime a string justificada a direita
 puts "Ruby       ".strip # imprime a string sem espaços em branco
 puts "Ruby       ".rstrip # imprime a string sem espaços em branco na direita
 puts "       Ruby".lstrip # imprime a string sem espaços em branco na esquerda
+puts "Ruby".chop # imprime a string sem o último caractere
+puts "Ruby".reverse # imprime a string ao contrário
+puts "Ruby".delete("u") # imprime a string sem o caractere
+puts "Ruby".delete("u", "b") # imprime a string sem os caracteres
+puts "Ruby".insert(0, "R") # imprime a string com o caractere
+puts "Ruby".insert(3, "a") # imprime a string com o caractere
+puts "Ruby".replace("Ruby", "Python") # imprime a string com a palavra substit
+puts "Ruby".concat("Python") # imprime a string com a palavra concatenada
+puts "Ruby".concat("Python".upcase) # imprime a string com a palavra concaten
+puts "Ruby".concat("Python".downcase) # imprime a string com a palavra concaten
+puts "Ruby".concat("Python".swapcase) # imprime a string com a palavra concaten
+puts "Ruby".concat("Python".capitalize) # imprime a string com a palavra concaten
+puts "Ruby".concat("Python".upcase.capitalize) # imprime a string com a palavra
+puts "Ruby".concat("Python".downcase.capitalize) # imprime a string com a palavra
+
