@@ -8,11 +8,11 @@ hello
 
 # 2- Método para somar dois números
 
-def sum(num1, num2)
-  puts num1 + num2
+def sum
+  puts 10 + 20
 end
 
-sum(10,20)
+sum
 
 # 3- Método para cadatrar Filmes
 
