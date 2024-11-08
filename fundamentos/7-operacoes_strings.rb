@@ -50,7 +50,7 @@ puts name.gsub("o", "a") # imprime a string com a palavra substituida
 puts name.include?("o") # imprime true se a palavra estiver na string
 puts name.start_with?("o") # imprime true se a palavra começar com a string
 puts name.end_with?("o") # imprime true se a palavra terminar com a string
-puts name.match(/o/) # imprime true se a palavra estiver na string
+puts name.match(/o/) # imprime true se a palavra/letra estiver na string
 puts "Ruby".center(10, "-") # imprime a string centralizada com o caract ---Ruby---
 puts "=" * 20 # imprime 20 vezes o =
 puts "Ruby".ljust(10, "-") # imprime a string justificada a esquerda
