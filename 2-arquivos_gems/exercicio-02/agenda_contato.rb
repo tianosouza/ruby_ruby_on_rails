@@ -16,6 +16,10 @@ cidade = gets.chomp
 
 
 CSV.open('../data/contatos.csv', 'w') do |csv|
-  csv << ['Nome', 'idade', 'cidade']
+  csv << ['Nome', 'Idade', 'Cidade']
   csv << [nome, idade, cidade]
+end
+
+CSV.foreach('../data/contatos.csv', headers: true) do |row|
+  puts "Nome: #{row['Nome']}, Idade: #{row['Idade']}, Cidade: #{row['Codade']}"
 end
