@@ -1,0 +1,214 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
+
+-- Started on 2024-11-20 14:37:17 -03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 210 (class 1259 OID 57600)
+-- Name: filmes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.filmes (
+    id integer NOT NULL,
+    titulo character varying(255) NOT NULL,
+    diretor character varying(255) NOT NULL,
+    ano integer NOT NULL,
+    genero character varying(255) NOT NULL,
+    duracao integer NOT NULL,
+    avaliacao double precision NOT NULL,
+    bilheteria double precision NOT NULL,
+    custo double precision NOT NULL
+);
+
+
+ALTER TABLE public.filmes OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 57599)
+-- Name: filmes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.filmes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.filmes_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3328 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: filmes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.filmes_id_seq OWNED BY public.filmes.id;
+
+
+--
+-- TOC entry 212 (class 1259 OID 57609)
+-- Name: series; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.series (
+    id integer NOT NULL,
+    titulo character varying(255) NOT NULL,
+    criador character varying(255) NOT NULL,
+    ano integer NOT NULL,
+    genero character varying(255) NOT NULL,
+    temporadas integer NOT NULL,
+    episodios integer NOT NULL,
+    avaliacao double precision NOT NULL,
+    canal character varying(255) NOT NULL,
+    situacao character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.series OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 57608)
+-- Name: series_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.series_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.series_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3329 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: series_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.series_id_seq OWNED BY public.series.id;
+
+
+--
+-- TOC entry 3174 (class 2604 OID 57603)
+-- Name: filmes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.filmes ALTER COLUMN id SET DEFAULT nextval('public.filmes_id_seq'::regclass);
+
+
+--
+-- TOC entry 3175 (class 2604 OID 57612)
+-- Name: series id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.series ALTER COLUMN id SET DEFAULT nextval('public.series_id_seq'::regclass);
+
+
+--
+-- TOC entry 3320 (class 0 OID 57600)
+-- Dependencies: 210
+-- Data for Name: filmes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.filmes (id, titulo, diretor, ano, genero, duracao, avaliacao, bilheteria, custo) FROM stdin;
+1	Mad Max: Fury Road	George Miller	2015	Ação	120	8.1	375200000	150000000
+2	Star Wars	George Lucas	1977	Sci-Fi	121	8.6	775398007	11000000
+4	Pride and Prejudice	Joe Wright	2005	Romance	129	7.8	121147947	28000000
+5	Back to the Future	Robert Zemeckis	1985	Sci-Fi	116	8.5	381109762	19000000
+7	The Lord of the Rings: The Return of the King	Peter Jackson	2003	Fantasia	201	9	1146030912	94000000
+8	Treasure Plane	Ron Clements, John Musker	2002	Animação	95	7.2	109578115	140000000
+9	Jurassic Park	Steven Spielberg	1993	Aventura	127	8.1	1043580597	63000000
+10	About Time	Richard Curtis	2013	Romance	123	7.8	87100000	12000000
+11	Transformers	Michael Bay	2007	Ação	144	7	709709780	150000000
+12	Mad Max: Fury Road	George Miller	2015	Ação	120	8.1	375200000	150000000
+13	Star Wars	George Lucas	1977	Sci-Fi	121	8.6	775398007	11000000
+15	Pride and Prejudice	Joe Wright	2005	Romance	129	7.8	121147947	28000000
+16	Back to the Future	Robert Zemeckis	1985	Sci-Fi	116	8.5	381109762	19000000
+6	The Godfather	Francis Ford Coppola	1972	Crime	175	6.7	246120974	6000000
+\.
+
+
+--
+-- TOC entry 3322 (class 0 OID 57609)
+-- Dependencies: 212
+-- Data for Name: series; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.series (id, titulo, criador, ano, genero, temporadas, episodios, avaliacao, canal, situacao) FROM stdin;
+1	Breaking Bad	Vince Gilligan	2008	Drama	5	62	9.5	AMC	Finalizada
+8	Once Upon a Time	Edward Kitsis, Adam Horowitz	2011	Fantasia	7	155	7.7	ABC	Finalizada
+9	The Mentalist	Bruno Heller	2008	Crime	7	151	8.1	CBS	Finalizada
+2	Game of Thrones	David Benioff, D.B. Weiss	2011	Fantasia	8	73	9.3	HBO	Em andamento
+4	Friends	David Crane, Marta Kauffman	1994	Comédia	10	236	8.9	NBC	Em andamento
+6	Vikings	Michael Hirst	2013	Drama Histórico	6	89	8.5	History Channel	Em andamento
+3	Stranger Things	The Duffer Brothers	2016	Sci-Fi	4	34	8.7	Netflix	Em andamento
+\.
+
+
+--
+-- TOC entry 3330 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: filmes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.filmes_id_seq', 16, true);
+
+
+--
+-- TOC entry 3331 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: series_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.series_id_seq', 11, true);
+
+
+--
+-- TOC entry 3177 (class 2606 OID 57607)
+-- Name: filmes filmes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.filmes
+    ADD CONSTRAINT filmes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3179 (class 2606 OID 57616)
+-- Name: series series_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.series
+    ADD CONSTRAINT series_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2024-11-20 14:37:20 -03
+
+--
+-- PostgreSQL database dump complete
+--
+
