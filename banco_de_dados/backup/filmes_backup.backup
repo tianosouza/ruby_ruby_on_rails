@@ -2,14 +2,15 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
--- Dumped by pg_dump version 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
+-- Dumped from database version 17.1 (Ubuntu 17.1-1.pgdg22.04+1)
+-- Dumped by pg_dump version 17.1 (Ubuntu 17.1-1.pgdg22.04+1)
 
--- Started on 2024-11-20 14:37:17 -03
+-- Started on 2024-11-21 07:48:45 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -23,7 +24,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 210 (class 1259 OID 57600)
+-- TOC entry 218 (class 1259 OID 16408)
 -- Name: filmes; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -43,7 +44,7 @@ CREATE TABLE public.filmes (
 ALTER TABLE public.filmes OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 57599)
+-- TOC entry 217 (class 1259 OID 16407)
 -- Name: filmes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -56,11 +57,11 @@ CREATE SEQUENCE public.filmes_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.filmes_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.filmes_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3328 (class 0 OID 0)
--- Dependencies: 209
+-- TOC entry 3354 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: filmes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -68,7 +69,7 @@ ALTER SEQUENCE public.filmes_id_seq OWNED BY public.filmes.id;
 
 
 --
--- TOC entry 212 (class 1259 OID 57609)
+-- TOC entry 220 (class 1259 OID 16417)
 -- Name: series; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -89,7 +90,7 @@ CREATE TABLE public.series (
 ALTER TABLE public.series OWNER TO postgres;
 
 --
--- TOC entry 211 (class 1259 OID 57608)
+-- TOC entry 219 (class 1259 OID 16416)
 -- Name: series_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -102,11 +103,11 @@ CREATE SEQUENCE public.series_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.series_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.series_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3329 (class 0 OID 0)
--- Dependencies: 211
+-- TOC entry 3355 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: series_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -114,7 +115,7 @@ ALTER SEQUENCE public.series_id_seq OWNED BY public.series.id;
 
 
 --
--- TOC entry 3174 (class 2604 OID 57603)
+-- TOC entry 3194 (class 2604 OID 16411)
 -- Name: filmes id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -122,7 +123,7 @@ ALTER TABLE ONLY public.filmes ALTER COLUMN id SET DEFAULT nextval('public.filme
 
 
 --
--- TOC entry 3175 (class 2604 OID 57612)
+-- TOC entry 3195 (class 2604 OID 16420)
 -- Name: series id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -130,16 +131,18 @@ ALTER TABLE ONLY public.series ALTER COLUMN id SET DEFAULT nextval('public.serie
 
 
 --
--- TOC entry 3320 (class 0 OID 57600)
--- Dependencies: 210
+-- TOC entry 3346 (class 0 OID 16408)
+-- Dependencies: 218
 -- Data for Name: filmes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.filmes (id, titulo, diretor, ano, genero, duracao, avaliacao, bilheteria, custo) FROM stdin;
 1	Mad Max: Fury Road	George Miller	2015	Ação	120	8.1	375200000	150000000
 2	Star Wars	George Lucas	1977	Sci-Fi	121	8.6	775398007	11000000
+3	Super Mario Bros	Aaron Horvath, Michael Jelenic	2023	Animação	92	7.3	130000000	100000000
 4	Pride and Prejudice	Joe Wright	2005	Romance	129	7.8	121147947	28000000
 5	Back to the Future	Robert Zemeckis	1985	Sci-Fi	116	8.5	381109762	19000000
+6	The Godfather	Francis Ford Coppola	1972	Crime	175	9.2	246120974	6000000
 7	The Lord of the Rings: The Return of the King	Peter Jackson	2003	Fantasia	201	9	1146030912	94000000
 8	Treasure Plane	Ron Clements, John Musker	2002	Animação	95	7.2	109578115	140000000
 9	Jurassic Park	Steven Spielberg	1993	Aventura	127	8.1	1043580597	63000000
@@ -147,32 +150,36 @@ COPY public.filmes (id, titulo, diretor, ano, genero, duracao, avaliacao, bilhet
 11	Transformers	Michael Bay	2007	Ação	144	7	709709780	150000000
 12	Mad Max: Fury Road	George Miller	2015	Ação	120	8.1	375200000	150000000
 13	Star Wars	George Lucas	1977	Sci-Fi	121	8.6	775398007	11000000
+14	Super Mario Bros	Aaron Horvath, Michael Jelenic	2023	Animação	92	7.3	1300000000	100000000
 15	Pride and Prejudice	Joe Wright	2005	Romance	129	7.8	121147947	28000000
 16	Back to the Future	Robert Zemeckis	1985	Sci-Fi	116	8.5	381109762	19000000
-6	The Godfather	Francis Ford Coppola	1972	Crime	175	6.7	246120974	6000000
 \.
 
 
 --
--- TOC entry 3322 (class 0 OID 57609)
--- Dependencies: 212
+-- TOC entry 3348 (class 0 OID 16417)
+-- Dependencies: 220
 -- Data for Name: series; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.series (id, titulo, criador, ano, genero, temporadas, episodios, avaliacao, canal, situacao) FROM stdin;
 1	Breaking Bad	Vince Gilligan	2008	Drama	5	62	9.5	AMC	Finalizada
+2	Game of Thrones	David Benioff, D.B. Weiss	2011	Fantasia	8	73	9.3	HBO	Finalizada
+3	Stranger Things	The Duffer Brothers	2016	Sci-Fi	4	34	8.7	Netflix	Em Andamento
+4	Friends	David Crane, Marta Kauffman	1994	Comédia	10	236	8.9	NBC	Finalizada
+5	The Office	Greg Daniels	2005	Comédia	9	201	8.8	NBC	Finalizada
+6	Vikings	Michael Hirst	2013	Drama Histórico	6	89	8.5	History Channel	Finalizada
+7	Lost	J.J. Abrams, Damon Lindelof	2004	Mistério	6	121	8.4	ABC	Finalizada
 8	Once Upon a Time	Edward Kitsis, Adam Horowitz	2011	Fantasia	7	155	7.7	ABC	Finalizada
 9	The Mentalist	Bruno Heller	2008	Crime	7	151	8.1	CBS	Finalizada
-2	Game of Thrones	David Benioff, D.B. Weiss	2011	Fantasia	8	73	9.3	HBO	Em andamento
-4	Friends	David Crane, Marta Kauffman	1994	Comédia	10	236	8.9	NBC	Em andamento
-6	Vikings	Michael Hirst	2013	Drama Histórico	6	89	8.5	History Channel	Em andamento
-3	Stranger Things	The Duffer Brothers	2016	Sci-Fi	4	34	8.7	Netflix	Em andamento
+10	Star Trek	Gene Roddenberry	1966	Sci-Fi	3	79	8.4	NBC	Finalizada
+11	Cobra Kai	Josh Heald, Jon Hurwitz, Hayden Schlossberg	2018	Ação	5	50	8.6	Netflix	Em Andamento
 \.
 
 
 --
--- TOC entry 3330 (class 0 OID 0)
--- Dependencies: 209
+-- TOC entry 3356 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: filmes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -180,8 +187,8 @@ SELECT pg_catalog.setval('public.filmes_id_seq', 16, true);
 
 
 --
--- TOC entry 3331 (class 0 OID 0)
--- Dependencies: 211
+-- TOC entry 3357 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: series_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -189,7 +196,7 @@ SELECT pg_catalog.setval('public.series_id_seq', 11, true);
 
 
 --
--- TOC entry 3177 (class 2606 OID 57607)
+-- TOC entry 3197 (class 2606 OID 16415)
 -- Name: filmes filmes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -198,7 +205,7 @@ ALTER TABLE ONLY public.filmes
 
 
 --
--- TOC entry 3179 (class 2606 OID 57616)
+-- TOC entry 3199 (class 2606 OID 16424)
 -- Name: series series_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -206,7 +213,7 @@ ALTER TABLE ONLY public.series
     ADD CONSTRAINT series_pkey PRIMARY KEY (id);
 
 
--- Completed on 2024-11-20 14:37:20 -03
+-- Completed on 2024-11-21 07:48:49 -03
 
 --
 -- PostgreSQL database dump complete

@@ -8,6 +8,7 @@
 -- pg_dump -U postgres -v -f ./backup/filmes_backup.backup filmes_series = cria um backup
 -- sudo -u postgres psql bd_filmes < backup/filmes_backup.backup = restaura o backup
 -- pg_dump -U postgres -F c -f backup/table_filmes_series.pgbackup -t filmes filmes_series
+-- psql -U postgres filmes_and_series < backup/filmes_backup.backup
 
 -- Atualização
 SELECT * FROM series;
