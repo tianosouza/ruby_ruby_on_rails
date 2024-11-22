@@ -222,6 +222,14 @@ JOIN medicos m ON c.medico_id = m.id
 JOIN especializacoes es ON m.especializacao_id = es.id
 WHERE es.nome = 'Cardiologia';
 
+-- Obter todos os tratamentos em andamento de um determinado paciente
+SELECT
+t.descricao,
+t.medicamentos
+FROM tratamentos t
+JOIN consultas c ON t.consulta_id = c.id
+JOIN pacientes p ON c.paciente_id = p.id
+WHERE p.nome_completo ILIKE '%j%';
 
 
 
