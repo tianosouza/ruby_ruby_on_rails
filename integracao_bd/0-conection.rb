@@ -1,3 +1,5 @@
+#  psql -U postgres -h localhost
+
 require 'pg'
 
 def create_connection

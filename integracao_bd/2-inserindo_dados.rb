@@ -1,5 +1,5 @@
 #  psql -U postgres -h localhost
-require_relative 'conection'
+require_relative '0-conection'
 
 conn = create_connection
 
