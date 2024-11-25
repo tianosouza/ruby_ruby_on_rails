@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 style="text-align: center">Posts</h1>
+  <hr>
+  <h2>Author: <%= @author %></h2>
+  
+  <ul class="list-group">
+    <% @posts.each do |post| %>
+      <li class="list-group-item"><%= post[:title] %> - <%= post[:content] %></li>
+    <% end %>
+  </ul>
+  
+  <a href="/estudantes">Estudantes link a</a><br>
+  <%= link_to 'Estudantes link_to', estudantes_path %>
+</div>
