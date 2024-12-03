@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  version: "1.0.0"
+  title: "API-Rails"
+  description: "Documentação da API para gerenciar autores"
+
+host: "localhost:3000"
+basePath: "/api/v1"
+schemes:
+  - "http"
+
+paths:
+  /authors:
+    get:
+      summary: "Lista todos os autores"
+      description: "Retorna uma lista de todos os autores"
+      responses:
+        200:
+          description: "Uma lista de autores"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Author"
+    post:
+      summary: "Cria um novo autor"
+      description: "Cria um novo autor com os dados fornecidos"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Dados do autor"
+          required: true
+          schema:
+            $ref: "#/definitions/AuthorInput"
+      responses:
+        201:
+          description: "Autor criado com sucesso"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Requisição inválida"
+
+  /authors/{id}:
+    get:
+      summary: "Obtém um autor pelo ID"
+      description: "Retorna um autor pelo ID fornecido"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        200:
+          description: "Detalhes do autor"
+          schema:
+            $ref: "#/definitions/Author"
+        404:
+          description: "Autor não encontrado"
+
+definitions:
+  Author:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      bio:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+
+  AuthorInput:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      bio:
+        type: "string"
+    required:
+      - name
